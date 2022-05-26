@@ -1,0 +1,60 @@
+class Solution {
+    public int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        
+        char [] ch = s.toCharArray();
+        int count = 0;
+        for(int i = 0; i<ch.length; i++){
+            if(ch[i] == 'I'){
+                if(i+1<ch.length && ch[i+1] == 'V'){
+                    count += 4;
+                    i++;
+                }
+                else if(i+1<ch.length && ch[i+1] == 'X'){
+                    count += 9;
+                    i++;
+                }
+                else {
+                    count += map.get(ch[i]);
+                }
+            }
+            else if(ch[i] == 'X'){
+                if(i+1<ch.length && ch[i+1] == 'L'){
+                    count += 40;
+                    i++;
+                }
+                else if(i+1<ch.length && ch[i+1] == 'C'){
+                    count += 90;
+                    i++;
+                }
+                else {
+                    count += map.get(ch[i]);
+                }
+            }
+            else if(ch[i] == 'C'){
+                if(i+1<ch.length && ch[i+1] == 'D'){
+                    count += 400;
+                    i++;
+                }
+                else if(i+1<ch.length && ch[i+1] == 'M'){
+                    count += 900;
+                    i++;
+                }
+                else {
+                    count += map.get(ch[i]);
+                }
+            }
+            else{
+                count += map.get(ch[i]);
+            }
+        }
+        return count;
+    }
+}
