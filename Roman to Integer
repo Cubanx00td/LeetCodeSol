@@ -12,44 +12,9 @@ class Solution {
         char [] ch = s.toCharArray();
         int count = 0;
         for(int i = 0; i<ch.length; i++){
-            if(ch[i] == 'I'){
-                if(i+1<ch.length && ch[i+1] == 'V'){
-                    count += 4;
-                    i++;
-                }
-                else if(i+1<ch.length && ch[i+1] == 'X'){
-                    count += 9;
-                    i++;
-                }
-                else {
-                    count += map.get(ch[i]);
-                }
-            }
-            else if(ch[i] == 'X'){
-                if(i+1<ch.length && ch[i+1] == 'L'){
-                    count += 40;
-                    i++;
-                }
-                else if(i+1<ch.length && ch[i+1] == 'C'){
-                    count += 90;
-                    i++;
-                }
-                else {
-                    count += map.get(ch[i]);
-                }
-            }
-            else if(ch[i] == 'C'){
-                if(i+1<ch.length && ch[i+1] == 'D'){
-                    count += 400;
-                    i++;
-                }
-                else if(i+1<ch.length && ch[i+1] == 'M'){
-                    count += 900;
-                    i++;
-                }
-                else {
-                    count += map.get(ch[i]);
-                }
+            if(i+1 < ch.length && (map.get(ch[i])<map.get(ch[i+1]))){
+                count += map.get(ch[i+1]) - map.get(ch[i]);
+                i+=1;
             }
             else{
                 count += map.get(ch[i]);
