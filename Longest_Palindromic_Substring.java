@@ -23,7 +23,6 @@ class Solution {
         
         if(maxlen < right-left-1){
             maxlen = right-left-1;
-            System.out.printf("%d %d %d\n", left, right, maxlen);
             start = left + 1;
             end = right - 1;
         }
